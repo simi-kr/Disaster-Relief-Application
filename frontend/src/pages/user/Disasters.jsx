@@ -32,7 +32,7 @@ const Disasters = () => {
             {mappedDisasters.length ? <div className="card" style={{ marginBottom: '1.5rem', overflow: 'hidden' }}>
                 <MapContainer center={[10.8505, 76.2711]} zoom={7} style={{ height: '350px', width: '100%', zIndex: 0 }}>
                     <TileLayer
-                        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution="&copy; OpenStreetMap contributors"
                     />
                     {mappedDisasters.map(d => (

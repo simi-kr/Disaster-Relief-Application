@@ -54,7 +54,7 @@ const ManageDisasters = () => {
 
             {disasters.some(disaster => Number.isFinite(Number(disaster.lat)) && Number.isFinite(Number(disaster.lng))) ? <div className="card" style={{ marginBottom: '1.5rem', overflow: 'hidden' }}>
                 <MapContainer center={[Number(disasters.find(disaster => Number.isFinite(Number(disaster.lat)) && Number.isFinite(Number(disaster.lng))).lat), Number(disasters.find(disaster => Number.isFinite(Number(disaster.lat)) && Number.isFinite(Number(disaster.lng))).lng)]} zoom={7} style={{ height: '350px', width: '100%', zIndex: 0 }}>
-                    <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" attribution="&copy; OpenStreetMap contributors" />
+                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
                     {disasters.filter(d => Number.isFinite(Number(d.lat)) && Number.isFinite(Number(d.lng))).map(d => (
                         <Marker key={d.id} position={[Number(d.lat), Number(d.lng)]}>
                             <Popup>

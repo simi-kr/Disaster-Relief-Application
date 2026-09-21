@@ -4,18 +4,18 @@ import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { readDisasters, readReliefCenters, readRequests, readResources, readVolunteers, subscribeToStore, writeCollection } from '../../services/localStore';
 
 const initialMapLocations = {
-    disasters: [{ id: 'map-disaster-1', name: 'Wayanad Landslide', type: 'Landslide', status: 'Active', location: 'Meppadi Sector', lat: 11.55, lng: 76.10 }],
-    reliefCenters: [{ id: 'map-center-1', name: 'Kochi Relief Center', status: 'Active', location: 'Kochi', lat: 9.97, lng: 76.28 }],
-    resources: [{ id: 'map-resource-1', name: 'Central Relief Hub', status: 'Available', location: 'Ernakulam', lat: 10.02, lng: 76.31 }]
+    disasters: [{ id: 'map-disaster-1', name: 'Wayanad Landslide', type: 'Landslide', status: 'Active', location: 'Meppadi Sector', lat: 11.548, lng: 76.086 }],
+    reliefCenters: [{ id: 'map-center-1', name: 'Kochi Relief Center', status: 'Active', location: 'Kochi', lat: 9.9312, lng: 76.2673 }],
+    resources: [{ id: 'map-resource-1', name: 'Central Relief Hub', status: 'Available', location: 'Ernakulam', lat: 9.9816, lng: 76.2999 }]
 };
 
 const knownCoordinates = [
-    { terms: ['wayanad', 'meppadi', 'chooralmala'], position: [11.55, 76.10] },
-    { terms: ['alappuzha', 'kuttanad'], position: [9.49, 76.32] },
-    { terms: ['kochi', 'ernakulam'], position: [9.97, 76.28] },
-    { terms: ['kozhikode'], position: [11.25, 75.78] },
-    { terms: ['changanassery'], position: [9.44, 76.54] },
-    { terms: ['idukki', 'periyar'], position: [9.85, 76.97] }
+    { terms: ['wayanad', 'meppadi', 'chooralmala'], position: [11.548, 76.086] },
+    { terms: ['alappuzha', 'kuttanad'], position: [9.498, 76.338] },
+    { terms: ['kochi', 'ernakulam'], position: [9.9312, 76.2673] },
+    { terms: ['kozhikode'], position: [11.2588, 75.7804] },
+    { terms: ['changanassery'], position: [9.4422, 76.5445] },
+    { terms: ['idukki', 'periyar'], position: [9.852, 76.965] }
 ];
 
 const getCoordinates = item => {
@@ -59,7 +59,7 @@ const LocationMap = () => {
             <PageHeader title="Location Map" description="View active disasters, help requests, relief centers, and resource hubs." />
             {markers.length ? <div className="card" style={{ overflow: 'hidden' }}>
                 <MapContainer center={mapCenter} zoom={7} style={{ height: '560px', width: '100%', zIndex: 0 }}>
-                    <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" attribution="&copy; OpenStreetMap contributors" />
+                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
                     {markers.map(item => <Marker key={`${item.type}-${item.id}`} position={item.position}><Popup><strong>{item.name || item.id}</strong><br />{item.type}<br />{item.location || item.address || 'Location from saved coordinates'}<br />{item.details}</Popup></Marker>)}
                 </MapContainer>
             </div> : <div className="card"><div className="card-body"><p style={{ color: 'var(--text-secondary)' }}>No saved locations are available yet.</p></div></div>}

@@ -82,7 +82,7 @@ const RequestHelp = () => {
                                 {form.latitude && <span style={{ alignSelf: 'center', fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{Number(form.latitude).toFixed(5)}, {Number(form.longitude).toFixed(5)}</span>}
                             </div>
                             <MapContainer center={[10.8505, 76.2711]} zoom={7} style={{ height: '180px', width: '100%', marginTop: '0.75rem', zIndex: 0 }}>
-                                <TileLayer url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" attribution="&copy; OpenStreetMap contributors" />
+                                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
                                 <LocationSelector position={form.latitude ? { latitude: Number(form.latitude), longitude: Number(form.longitude) } : null} onSelect={setPosition} />
                             </MapContainer>
                         </div>
