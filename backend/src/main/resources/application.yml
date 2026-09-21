@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: disaster-relief-backend
+
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:this-is-a-dev-only-default-secret-change-it-please-32bytes-min}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  seed:
+    admin-email: ${SEED_ADMIN_EMAIL:admin@disasterrelief.local}
+    admin-password: ${SEED_ADMIN_PASSWORD:Admin@123}
+
+logging:
+  level:
+    com.college.disasterrelief: INFO
